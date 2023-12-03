@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="http://code.jquery.com/jquery-latest.min.js"></script>
   <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+  <script src="./js/regist.js"></script>
   <link rel="stylesheet" href="./css/test.css">
   <title>Document</title>
   <style>
@@ -57,6 +58,8 @@
       background-color: #EBEBEB;
       border-radius: 5px;
       border: none;
+      text-align: center;
+      font-weight: bold;
 
     }
 
@@ -73,6 +76,7 @@
       height: 130px;
       background-color: #EBEBEB;
       border-radius: 10px;
+
     }
 
     #submitbutton {
@@ -169,7 +173,8 @@
 
     #fileLengthText {
       display: inline-block;
-      margin-left: 65px;
+      margin-left: 60px;
+
     }
 
     #clipImage {
@@ -177,12 +182,22 @@
     }
 
     input[type="button"] {
-      width: 15%;
+      width: 10%;
       margin-left: 1%;
+    }
+
+    #addrDong {
+      text-align: center;
+      font-weight: bold;
+      width: 20%;
+    }
+
+    #goodsDate {
+      width: 20%;
     }
   </style>
 
-  <script>
+  <!-- <script>
     var con;
     var fileNo = 0;
     var filesArr = new Array();
@@ -190,7 +205,30 @@
     var curImgCnt = 0;
     $(function () {
 
+      (function () {
+        setDate();
+      })();
 
+
+
+
+      $("#price").change(function () {
+
+        var priceTag = $("#price");
+        var priceVal = priceTag.val();
+        var priceNoComma = priceVal.replace(/,/g, "").replace(/￦/, "").trim();
+        if (numberValidation(priceNoComma)) {
+
+          var priceNum = Number(priceNoComma);
+          var priceComma = priceNum.toLocaleString("ko-KR");
+          priceTag.val("￦ " + priceComma);
+
+        } else {
+          alert("숫자만 입력해 제발");
+        }
+
+
+      })
 
       //이미지 등록 사진 누르면, input type file 클릭되도록 함
       var inputFile = $("input[type=file]"); //전체 input[type=file]의미 
@@ -218,7 +256,10 @@
 
 
     })
+  </script>
 
+  <script>
+    //onload 외 function 모음
     function validationImageLength(curFileCnt, remainFileCnt) {
 
       //첨부될 파일이 추가로 첨부가능한  파일보다 많다면 못하게 막음
@@ -302,7 +343,41 @@
       alert(1);
     }
 
+    function numberValidation(val) {
+      return !isNaN(val);
+    }
+
+    function setDate() {
+      let today = new Date();
+      today.setDate(today.getDate() + 1);
+      let mindate = today.toISOString().split('T')[0];
+      $("#goodsDate").attr("min", mindate);
+    }
   </script>
+  <script>
+    //주소조회 용 
+    $(function () {
+
+      $("#addrSearchButton").click(searchAddr);
+
+    });
+    function searchAddr() {
+      new daum.Postcode({
+        oncomplete: function (data) {
+
+          var jibunAddress = data.jibunAddress;
+          var jibunArr = jibunAddress.split(" ");
+          var dong = jibunArr[jibunArr.length - 2];
+
+
+
+          $("#fullJibun").val(jibunAddress);
+          $("#addrDong").val(dong);
+
+        }
+      }).open();
+    }
+  </script> -->
 </head>
 
 <body>
@@ -352,7 +427,7 @@
         </div>
         <div class="inputBox">
           <span class="inputlabel"><span class="pointer">*</span>시작가격</span>
-          <input type="text">
+          <input id="price" type="text">
         </div>
         <div class="inputBox">
           <span class="inputlabel"><span class="pointer">*</span>
@@ -360,13 +435,14 @@
             <img id="clipImage" src="./image/clip.PNG">
           </span>
           <div id="addrBox">
-            <input id="addr" type="text">
-            <input type="button" value="주소조회" style="background-color: #777777;">
+            <input id="addrDong" type="text" readonly>
+            <input id="fullJibun" type="hidden">
+            <input id="addrSearchButton" type="button" value="주소조회" style="background-color: #777777;">
           </div>
         </div>
         <div class="inputBox">
           <span class="inputlabel"><span class="pointer">*</span>거래마감일</span>
-          <input type="date">
+          <input id="goodsDate" type="date" placeholder="마감일자를 선택해 주세요">
         </div>
       </div>
       <div id="submitbutton">
