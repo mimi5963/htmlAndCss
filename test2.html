@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+  <title>Document</title>
+</head>
+<script>
+  var filesArr = new Array();
+  $(function () {
+
+    $("#file").change(function () {
+
+
+
+      var inputFile = $("#file");
+      console.log(inputFile);
+      console.log(inputFile.val());
+      // for (const file of inputFile.files) {
+      //   window.filesArr.push(file);
+      // }
+
+      // $("#hiddenFile").val(filesArr);
+      // var val = $("#hiddenFile").val();
+      // console.log(filesArr[0]);
+    })
+
+  })
+
+</script>
+
+<body>
+  <input type="file" id="file" multiple>
+  <input type="hidden" id="hiddenFile">
+</body>
+
+</html>
