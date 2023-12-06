@@ -4,21 +4,30 @@ var filesArr = new Array();
 var maxFileCnt = 5;
 var curImgCnt = 0;
 $(function () {
-  (function () {
+
+  let cate2 = $("#goodsCategory2");
+  
+  let html ="";
+  html = "<forms:option value='"+cate.category_id+"'>"+ cate.category_name+"</forms:option>";
+  cate2.append(html);
+  $('#registForm').submit(function (event) {
+    validationFormData(event);
+  });
+
+
+  
+  })(function () {
     setDate();
   })();
 
-  $('#price').change(function () {
-    var priceTag = $('#price');
-    var priceVal = priceTag.val();
-    var priceNoComma = priceVal.replace(/,/g, '').replace(/￦/, '').trim();
-    if (numberValidation(priceNoComma)) {
-      var priceNum = Number(priceNoComma);
-      var priceComma = priceNum.toLocaleString('ko-KR');
-      priceTag.val('￦ ' + priceComma);
-    } else {
-      alert('숫자만 입력해 제발');
+  (function () {
+    var p = $('#price').val();
+    if (p !== '' && p !== null && p !== undefined) {
+      changePrice();
     }
+  })();
+  $('#price').change(function () {
+    changePrice();
   });
 
   //이미지 등록 사진 누르면, input type file 클릭되도록 함
@@ -44,6 +53,64 @@ $(function () {
 });
 
 //onload 외 function 모음
+function validationFormData(event){
+  var files = $('#himage').var();
+    var goods_title = $('#goods_title').val();
+    var goods_category1 = $('#goodsCategory1').val();
+    var goods_category2 = $('#goodsCategory2').val();
+    var price = $('#price').val();
+    var fulljibun = $('#fullJibun').val();
+    var goods_date = $('goodsDate').val();
+
+    if (files === '') {
+      alert('상품 이미지는 최소 1개이상 등록해주세요');
+      event.preventDefault();
+      return;
+    }
+
+    if (goods_title === '') {
+      alert('제목은 반드시 입력하셔야하는 값 입니다.');
+      event.preventDefault();
+      return;
+    }
+
+    if (goods_category1 === '' || goods_category2 === '') {
+      alert('카테고리를 지정해주세요.');
+      event.preventDefault();
+      return;
+    }
+
+    if (price === '') {
+      alert('가격을 정확하게 입력해주세요.');
+      event.preventDefault();
+      return;
+    }
+
+    if(price < 0 ){
+      alert('가격은 음수일 수 없습니다.');
+      event.preventDefault();
+      return;
+    }
+
+    if(!Number.isInteger(price)){
+      alert('가격은 소수점을 포함할 수 없습니다.');
+      event.preventDefault();
+      return;
+    }
+
+    if (fulljibun === '') {
+      alert('주소를 정확하게 기입해주세요.');
+      event.preventDefault();
+      return;
+    }
+
+    if (goods_date === '') {
+      alert('경매일자를 정확하게 기입해주세요.');
+      event.preventDefault();
+      return;
+    }
+}
+
 function validationImageLength(curFileCnt, remainFileCnt) {
   //첨부될 파일이 추가로 첨부가능한  파일보다 많다면 못하게 막음
   if (curFileCnt > remainFileCnt) {
@@ -137,7 +204,31 @@ function setDate() {
   $('#goodsDate').attr('min', mindate);
   $('#goodsDate').val(mindate);
 }
+//$('#price').change(function () {
+//  var priceTag = $('#price');
+//  var priceVal = priceTag.val();
+//   var priceNoComma = priceVal.replace(/,/g, '').replace(/￦/, '').trim();
+//  if (numberValidation(priceNoComma)) {
+//    var priceNum = Number(priceNoComma);
+//    var priceComma = priceNum.toLocaleString('ko-KR');
+//     priceTag.val('￦ ' + priceComma);
+//   } else {
+//     alert('숫자만 입력해 제발');
+//   }
+// });
+function changePrice() {
+  var priceTag = $('#price');
+  var priceVal = priceTag.val();
+  var priceNoComma = priceVal.replace(/,/g, '').replace(/￦/, '').trim();
+  if (numberValidation(priceNoComma)) {
+    var priceNum = Number(priceNoComma);
+    var priceComma = priceNum.toLocaleString('ko-KR');
 
+    priceTag.val('￦ ' + priceComma);
+  } else {
+    alert('숫자만 입력해 주세요');
+  }
+}
 //주소조회 용
 $(function () {
   $('#addrSearchButton').click(searchAddr);

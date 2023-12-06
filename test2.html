@@ -15,17 +15,26 @@
     $("#file").change(function () {
 
 
-
-      var inputFile = $("#file");
-      console.log(inputFile);
-      console.log(inputFile.val());
-      // for (const file of inputFile.files) {
-      //   window.filesArr.push(file);
+      // var form = document.querySelector("form");
+      // var formData = new FormData(form);
+      // //사진 파일 첨부
+      // for (var i = 0; i < window.filesArr.length; i++) {
+      //   if (!window.filesArr[i].is_delete) {
+      //     formData.append("images", filesArr[i]);
+      //   }
       // }
+      const dataTransfer = new DataTransfer();
+      //dataTransfer.items.add
+      var inputFile = $("#file")[0];
 
-      // $("#hiddenFile").val(filesArr);
-      // var val = $("#hiddenFile").val();
-      // console.log(filesArr[0]);
+      for (const file of inputFile.files) {
+        dataTransfer.items.add(file);
+      }
+      console.log(dataTransfer.files);
+      $("#hiddenFile")[0].files = dataTransfer.files;
+      console.log($("#hiddenFile")[0].files);
+
+
     })
 
   })
