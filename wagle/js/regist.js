@@ -8,8 +8,9 @@ $(function () {
   let cate2 = $("#goodsCategory2");
   
   let html ="";
-  html = "<forms:option value='"+cate.category_id+"'>"+ cate.category_name+"</forms:option>";
-  cate2.append(html);
+  html += "<forms:option value='"+cate.category_id+"'>";
+  html += cate.category_name+"</forms:option>";
+  cate2.html(html);
   $('#registForm').submit(function (event) {
     validationFormData(event);
   });
