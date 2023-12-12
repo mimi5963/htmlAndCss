@@ -37,14 +37,38 @@
 
     })
 
-  })
 
+  })
+  function datetime() {
+    //시간 입력 함수
+    var tttt = getTimeStamp();
+    $("#testD").val(tttt);
+    console.log($("#testD").val());
+
+  }
+
+  function getTimeStamp() {
+    let goodsDateString = $("#testDate");
+    let now = new Date();
+
+    //시간 추출 
+    var hours = ('0' + now.getHours()).slice(-2);
+    var min = ('0' + now.getMinutes()).slice(-2);
+    var seconds = ('0' + now.getSeconds()).slice(-2);
+    var timeString = hours + ':' + min + ':' + seconds;
+    //
+    var TimeStampString = goodsDateString.val() + " " + timeString;
+    return TimeStampString;
+  }
 </script>
 
 <body>
   <option value="1" style="display: none;"></option>
   <input type="file" id="file" multiple>
   <input type="hidden" id="hiddenFile">
+  <input type="date" id="testDate" onchange="datetime();">
+  <input type="hidden" id="testD">
+
 </body>
 
 </html>

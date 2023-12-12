@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Sample</title>
+  <link rel="stylesheet" href="/wagle/css/common.css">
+  <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+  <link rel="stylesheet" href="/wagle/css/goodsShow.css">
+  <style>
+    #imagewrap {
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #slideList {
+      position: absolute;
+      left: 0;
+      top: 0;
+
+    }
+
+    #slideList>.imgs {
+
+      float: left;
+
+    }
+
+    #slideList.active {
+      transition: 0.5s ease-out;
+    }
+
+    .direc {
+      position: absolute;
+      cursor: pointer;
+      z-index: 1;
+    }
+  </style>
+  <script>
+    //나중에 데이터로 대체
+    var userlike = false;
+    $(function () {
+
+
+      $("#likebox").click(function () {
+        if (window.userlike === false) {
+          $("#likeImage").attr("src", " /wagle/image/favorite.jpg");
+        } else {
+          $("#likeImage").attr("src", "/wagle/image/favorite_border.jpg");
+        }
+        userlike = !userlike;
+      })
+
+      $("#slideList").click(function (event) {
+        event.offsetX
+        if (event > 350) {
+
+        } else {
+
+        }
+      });
+
+    });
+
+
+
+
+
+
+  </script>
+  <style>
+
+  </style>
+</head>
+
+<body>
+
+  <div id="center">
+    <div id="container">
+      <div id="wrap">
+
+        <div id="top">
+          <div id="topbox1" class="topbox">
+            <div id="imagebox">
+              <img id="left" class="direc hidden" src="wagle/image/left.png" alt="">
+              <img id="right" class="direc hidden" src="wagle/image/right.png" alt="">
+              <div id="imagewrap">
+                <div id="slideList">
+                  <img class="imgs" src="wagle/image/image 17.jpg">
+                  <img class="imgs" src="wagle/image/mang1.png">
+                  <img class="imgs" src="wagle/image/mang2.jpg">
+                  <img class="imgs" src="wagle/image/mang3.jpg">
+                </div>
+              </div>
+            </div>
+            <script src="wagle/js/slide.js"></script>
+            <div id="likebox">
+              <img id="likeImage" src="wagle/image/favorite_border.jpg">
+              <div id="jjim">찜하기</div>
+            </div>
+          </div>
+          <div id="topbox2" class="topbox">
+            <div class="topbox2c" id="title">
+              <div id="titleFont">[귀염뽀짝] 망고미 잠옷
+
+              </div>
+              <div id="reportFont">
+                <span id="sirenfont" class="siren">신고하기</span>
+                <img id="sirenimg" class="siren" src="wagle/image/Siren Rounded.jpg">
+              </div>
+            </div>
+            <div class="topbox2c" id="seller">
+              <div id="sellerBox">
+                <div id="sellerfont">판매자 : <span id="sellerNic">망고미</span></div>
+                <div id="disBox">와글이와의 거리 "<span id="dis">42</span>"</div>
+              </div>
+              <div id="addrBox">
+                <div id="addrfont">거래장소 : <span id="dong">마포구</span></div>
+                <span>(정확한 장소는 입찰 후 공개됩니다.)</span>
+              </div>
+
+            </div>
+            <div class="topbox2c" id="contentbox">상품설명:
+              <div id="content"> 나 너에게 앞에 있어~ 우리의 시간을 되돌려줘</div>
+            </div>
+            <div class="topbox2c" id="priceAndTimeFont">
+              <span id="priceFont">경매 시작 가격</span>
+              <span id="timeoutFont">경매 종료까지 시간</span>
+            </div>
+            <div class="topbox2c" id="priceAndTime">
+              <span id="priceVal">50,000원</span>
+              <span id="timeVal">1일 05시간 30분</span>
+            </div>
+            <div class="topbox2c" id="topbox2footer">
+              <div id="person">
+                <span class="footerFont">현재 경재 참여 인원</span>
+                <img id="personimg" src="wagle/image/person.png" alt="">
+                <span id="personcnt">20</span>
+              </div>
+              <div id="jjimp">
+                <span class="footerFont">이 상품을 찜한 사람</span>
+                <img src="wagle/image/favorite.jpg">
+                <span id="jjimcnt">10</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="mid">
+
+        </div>
+        <div id="bottom">
+
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+
+</body>
+
+</html>
