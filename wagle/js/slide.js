@@ -1,32 +1,22 @@
-var slidList = document.querySelector('#slideList');
-var imgs = document.querySelectorAll('.imgs');
-var imgLength = imgs.length;
-var imgWidth = imgs[0].width;
-var left = document.querySelector('#left');
-var right = document.querySelector('#right');
-var currImg = 0;
-init();
+let slidList = document.querySelector('#slideList');
+let imgs = document.querySelectorAll('.imgs');
+let imgLength = imgs.length;
+let imgWidth = imgs[0].width;
+let imgHight = imgs[0].height;
+let currImg = 0;
+//이미지와 이미지 슬라이드 감싸고 있는 박스
+let imagewrap = document.querySelector('#imagewrap');
+//초기 사이즈 조절
+setImgSize();
+//이미지가 1개면 움직일 필요 없으니, slide 사이드나 clone객체 생성로직 제외
+if (imgLength > 1) {
+  init();
+}
 function init() {
   addImages();
   addClickEvent();
 }
 
-function addClickEvent() {
-  left.addEventListener('click', () => {
-    moveSlide(currImg - 1);
-  });
-  right.addEventListener('click', () => {
-    moveSlide(currImg + 1);
-  });
-
-  $('#slideList').click(function (event) {
-    if (event.offsetX >= 210) {
-      moveSlide(currImg + 1);
-    } else {
-      moveSlide(currImg - 1);
-    }
-  });
-}
 function addImages() {
   //맨 뒤 그림부터 앞에 추가
   for (let i = imgLength - 1; i >= 0; i--) {
@@ -44,25 +34,27 @@ function addImages() {
   updateSlideWidth();
   setInitPos();
 }
-
+//이미지 슬라이드 크기조정
 function updateSlideWidth() {
-  var newimgs = document.querySelectorAll('.imgs');
-  var newLen = newimgs.length;
+  let newimgs = document.querySelectorAll('.imgs');
+  let newLen = newimgs.length;
   slidList.style.width = newLen * imgWidth + 'px';
 }
-
+//초기 위치 지정
 function setInitPos() {
-  var initpos = -(imgLength * imgWidth);
+  let initpos = -(imgLength * imgWidth);
+  console.log(initpos);
   slidList.style.transform = 'translateX(' + initpos + 'px)';
   setTimeout(() => {
     slidList.classList.add('active');
   }, 100);
 }
-
+//버튼 클릭시 움직임
 function moveSlide(num) {
-  var left = -(num * imgWidth);
+  let left = -(num * imgWidth);
   slidList.style.left = left + 'px';
   currImg = num;
+  console.log(left);
   if (currImg == imgLength || -currImg == imgLength) {
     setTimeout(() => {
       slidList.classList.remove('active');
@@ -74,3 +66,40 @@ function moveSlide(num) {
     }, 550);
   }
 }
+
+function setImgSize() {
+  //모든 imgs불러옴
+  let imgs = document.querySelectorAll('.imgs');
+
+  const width = imagewrap.clientWidth;
+  const height = imagewrap.clientHeight;
+  //새로 저장된 사이즈 부여
+  for (let img of imgs) {
+    img.width = width;
+    img.height = height;
+  }
+  console.log('change img size' + width);
+  return width;
+}
+
+//사이즈가 변화면 실행될 함수 정의
+function abjustImgDoms() {
+  //움직임 보이지 않도록 active제거 일단 제거
+  slidList.classList.remove('active');
+  //새롭게 부여된 박스 사이즈 계산
+  imgWidth = setImgSize();
+  //계산된 박스 사이즈로 slide사이즈 조절
+  updateSlideWidth();
+  //초기 위치 조절
+  setInitPos();
+  //만약 이미지를 넘긴 상태로 화면 크기를 조절했다면, 반영
+  moveSlide(currImg);
+}
+
+//imagewrap의 사이지 변화 추적
+const observer = new ResizeObserver((entries) => {
+  for (let enrty of entries) {
+    abjustImgDoms();
+  }
+});
+observer.observe(imagewrap);

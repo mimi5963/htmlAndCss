@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Sample</title>
+  <link rel="stylesheet" href="wagle/css/common.css">
+  <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+  <style>
+    #wrap {
+      width: 80%;
+      height: 100%;
+      min-height: 570px;
+      display: flex;
+      flex-direction: row;
+      border: 1px solid black;
+      justify-content: space-between;
+    }
+
+    #left {
+      width: 40%;
+      height: 100%;
+      min-height: 520px;
+      border: 1px solid black;
+
+      margin-top: 3%;
+      margin-bottom: 3%;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    #left>div {
+      border: 1px solid black;
+      width: 100%;
+    }
+
+    /*이미지 박스 css*/
+    #imgBox {
+      min-height: 330px;
+      height: 63%;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+
+    }
+
+    /*이미지 띄우는 영역*/
+    #imgContainer {
+      width: 82%;
+      ;
+      display: flex;
+      flex-direction: column;
+    }
+
+    #imgContent {
+      height: 60%;
+      border: 1px solid black;
+    }
+
+    #imagewrap {
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #slideList {
+      position: absolute;
+
+      height: 100%;
+      left: 0;
+      top: 0;
+
+    }
+
+    #slideList>.imgs {
+
+      float: left;
+
+    }
+
+    #slideList.active {
+      transition: 0.5s ease-out;
+    }
+
+    /**/
+    #textContent {
+      height: 40%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    #textContent>div {
+      height: 25%;
+      border: 1px solid black;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      font-size: 12px;
+      line-height: 30px;
+      font-weight: bold;
+      padding-left: 5%;
+      padding-right: 5%;
+    }
+
+    /*글씨 나오는 영역 이미지 순서*/
+    #textContent>div>span {
+      display: inline-block;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    #titleContent {
+      width: 62%;
+      margin-right: 0px;
+      text-align: right;
+    }
+
+    /*img 버튼 영역*/
+    .imgButton {
+      width: 6%;
+      position: relative;
+    }
+
+    .imgButton>img {
+      width: 100%;
+      height: 25px;
+      position: absolute;
+      top: 45%
+    }
+
+    /**/
+    #mobileNotification {
+      min-height: 80px;
+      height: 15%;
+
+    }
+
+    .leftbutton {
+      min-height: 50px;
+      height: 9%;
+
+    }
+
+    #right {
+      width: 55%;
+      height: 100%;
+      min-height: 520px;
+      border: 1px solid black;
+
+      margin-top: 3%;
+      margin-bottom: 3%;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="center">
+    <div id="container">
+      <div id="wrap">
+        <div id="left">
+          <div id="imgBox">
+            <div id="imgleft" class="imgButton">
+              <img src="wagle/image/realLeft.jpg" alt="">
+            </div>
+            <div id="imgContainer">
+              <div id="imgContent">
+
+                <div id="imagewrap">
+                  <div id="slideList">
+                    <img class="imgs" src="wagle/image/image 17.jpg">
+                    <img class="imgs" src="wagle/image/mang1.png">
+                    <img class="imgs" src="wagle/image/mang2.jpg">
+                    <img class="imgs" src="wagle/image/mang3.jpg">
+                  </div>
+                </div>
+
+              </div>
+              <div id="textContent">
+                <div id="goodsTitle">
+                  <span>판매상품</span>
+                  <span id="titleContent">망곰이 어린이 내복입니다다</span>
+                </div>
+                <div id="seller">
+                  <span>판매자</span><span>망곰이</span>
+                </div>
+                <div id="actionPrice">
+                  <span>낙찰 가격</span><span>45,000</span>
+                </div>
+                <div id="addr">
+                  <span>거래 장소</span><span>마포구 연남동</span>
+                </div>
+              </div>
+            </div>
+            <div id="imgRight" class="imgButton">
+              <img src="wagle/image/realRight.jpg" alt="">
+            </div>
+          </div>
+          <div id="mobileNotification"></div>
+          <div class="leftbutton" id="actionEnd"></div>
+          <div class="leftbutton" id="reportUser"></div>
+        </div>
+        <div id="right">
+          <div></div>
+          <div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="wagle/js/slidChat.js"></script>
+  <script src="wagle/js/slide.js"></script>
+
+</body>
+
+</html>
