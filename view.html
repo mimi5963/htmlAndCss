@@ -89,11 +89,13 @@
     function askingPrice() {
       let askPriceDom = $("#submitPoint > input");
       let askPrice = askPriceDom.val();
+      let askPriceNoComma = askPrice.replace(/,/g, "");
+
       //숫자 검증
-      if (askPriceValidation(askPrice)) {
+      if (askPriceValidation(askPriceNoComma)) {
         //검증 완료 후 숫자 변환 
-        askPriceComma = askPrice.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
-        showModal("제출하신 가격은 <span id='priceComma'>" + askPriceComma + "</span>원 입니다.<br>" +
+
+        showModal("제출하신 가격은 <span id='priceComma'>" + askPrice + "</span>원 입니다.<br>" +
           "한번 제출한 가격은 취소할 수 없습니다. <br>" +
           "계속 진행하시겠습니까?", "submit");
 

@@ -5,158 +5,46 @@
   <meta charset="UTF-8">
   <title>Sample</title>
   <link rel="stylesheet" href="wagle/css/common.css">
+  <link rel="stylesheet" href="wagle/css/chat.css">
   <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 
-  <style>
-    #wrap {
-      width: 80%;
-      height: 100%;
-      min-height: 570px;
-      display: flex;
-      flex-direction: row;
-      border: 1px solid black;
-      justify-content: space-between;
-    }
-
-    #left {
-      width: 40%;
-      height: 100%;
-      min-height: 520px;
-      border: 1px solid black;
-
-      margin-top: 3%;
-      margin-bottom: 3%;
-
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    #left>div {
-      border: 1px solid black;
-      width: 100%;
-    }
-
-    /*이미지 박스 css*/
-    #imgBox {
-      min-height: 330px;
-      height: 63%;
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-
-    }
-
-    /*이미지 띄우는 영역*/
-    #imgContainer {
-      width: 82%;
-      ;
-      display: flex;
-      flex-direction: column;
-    }
-
-    #imgContent {
-      height: 60%;
-      border: 1px solid black;
-    }
-
-    #imagewrap {
-      height: 100%;
-      position: relative;
-      overflow: hidden;
-    }
-
-    #slideList {
-      position: absolute;
-
-      height: 100%;
-      left: 0;
-      top: 0;
-
-    }
-
-    #slideList>.imgs {
-
-      float: left;
-
-    }
-
-    #slideList.active {
-      transition: 0.5s ease-out;
-    }
-
-    /**/
-    #textContent {
-      height: 40%;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    #textContent>div {
-      height: 25%;
-      border: 1px solid black;
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      font-size: 12px;
-      line-height: 30px;
-      font-weight: bold;
-      padding-left: 5%;
-      padding-right: 5%;
-    }
-
-    /*글씨 나오는 영역 이미지 순서*/
-    #textContent>div>span {
-      display: inline-block;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    #titleContent {
-      width: 62%;
-      margin-right: 0px;
-      text-align: right;
-    }
-
-    /*img 버튼 영역*/
-    .imgButton {
-      width: 6%;
-      position: relative;
-    }
-
-    .imgButton>img {
-      width: 100%;
-      height: 25px;
-      position: absolute;
-      top: 45%
-    }
-
-    /**/
-    #mobileNotification {
-      min-height: 80px;
-      height: 15%;
-
-    }
-
-    .leftbutton {
-      min-height: 50px;
-      height: 9%;
-
-    }
-
-    #right {
-      width: 55%;
-      height: 100%;
-      min-height: 520px;
-      border: 1px solid black;
-
-      margin-top: 3%;
-      margin-bottom: 3%;
-    }
-  </style>
 </head>
+
+<script>
+  $(function () {
+    $("#inputbutton").click(function () {
+      chatting();
+    })
+
+    let pressEvent = $("#chatinput").on("keyup", function (key) {
+
+      if (key.keyCode == 13) {
+        chatting();
+      }
+
+    })
+
+  })
+
+  function chatting() {
+
+    let chatClone = document.querySelector(".chatme").cloneNode(true);
+    chatClone.classList.remove("hide");
+
+    let inputDom = document.querySelector("#chatinput");
+    if (inputDom.value !== '') {
+      chatClone.lastChild.innerText = inputDom.value;
+      inputDom.value = "";
+      console.log(chatClone.lastChild);
+      document.querySelector("#chatWarp").appendChild(chatClone);
+
+    }
+  }
+
+  function eventClear() {
+    $("#chatinput").off("keyup");
+  }
+</script>
 
 <body>
 
@@ -201,13 +89,43 @@
               <img src="wagle/image/realRight.jpg" alt="">
             </div>
           </div>
-          <div id="mobileNotification"></div>
-          <div class="leftbutton" id="actionEnd"></div>
-          <div class="leftbutton" id="reportUser"></div>
+          <div id="mobileNotification">
+            <div id="notice1">
+              <img src="wagle/image/light.jpg" alt="">
+              <div>모바일로 '<span>거래 확정하기</span>'가 가능해요!</div>
+            </div>
+            <div id="notice2">
+              제품을 받고 거래 확정하기를 반드시 눌러주세요.
+            </div>
+          </div>
+          <div class="leftbutton" id="actionEnd">
+            <img id="endImg" src="wagle/image/ok.png" alt="" />
+            <div id="endFont">거래 확정하기</div>
+          </div>
+          <div class="leftbutton" id="reportUser">
+            <img id="reportImg" src="wagle/image/Danger Square.png" alt="" />
+            <div id="reportFont">거래 파기 신고하기</div>
+          </div>
         </div>
         <div id="right">
-          <div></div>
-          <div></div>
+          <div id="textArea">
+            <div id="placeholders">
+              <span id="place1">거래완료를 위해 쪽지를 주고 받으세요.</span>
+              <span>(거래 장소,시간정하기)</span>
+            </div>
+            <div id="chatShowArea">
+              <div id="chatWarp">
+                <div class="chatop hide">아이디 : <span>내용</span></div>
+                <div class="chatme hide">아이디 : <span>내용</span></div>
+              </div>
+            </div>
+          </div>
+          <div id="chatInputArea">
+            <div id="chatinputwrap">
+              <input type="text" id="chatinput">
+              <div id="inputbutton">보내기</div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
