@@ -32,11 +32,13 @@
     chatClone.classList.remove("hide");
 
     let inputDom = document.querySelector("#chatinput");
+
     if (inputDom.value !== '') {
-      chatClone.lastChild.innerText = inputDom.value;
+      let chatText = chatClone.querySelector(".chatContent");
+      chatText.innerText = inputDom.value;
       inputDom.value = "";
-      console.log(chatClone.lastChild);
-      document.querySelector("#chatWarp").appendChild(chatClone);
+
+      document.querySelector("#chatShowArea").appendChild(chatClone);
 
     }
   }
@@ -51,85 +53,137 @@
   <div id="center">
     <div id="container">
       <div id="wrap">
-        <div id="left">
-          <div id="imgBox">
-            <div id="imgleft" class="imgButton">
-              <img src="wagle/image/realLeft.jpg" alt="">
-            </div>
-            <div id="imgContainer">
-              <div id="imgContent">
+        <div id="chatBoxes">
 
-                <div id="imagewrap">
-                  <div id="slideList">
-                    <img class="imgs" src="wagle/image/image 17.jpg">
-                    <img class="imgs" src="wagle/image/mang1.png">
-                    <img class="imgs" src="wagle/image/mang2.jpg">
-                    <img class="imgs" src="wagle/image/mang3.jpg">
+          <div id="leftBox1">
+            <div id="imgBox">
+              <div id="imgleft" class="imgButton">
+                <img src="wagle/image/realLeft.jpg" alt="">
+              </div>
+              <div id="imgContainer">
+                <div id="imgContent">
+
+                  <div id="imagewrap">
+                    <div id="slideList">
+                      <img class="imgs" src="wagle/image/image 17.jpg">
+                      <img class="imgs" src="wagle/image/mang1.png">
+                      <img class="imgs" src="wagle/image/mang2.jpg">
+                      <img class="imgs" src="wagle/image/mang3.jpg">
+                    </div>
+                  </div>
+
+                </div>
+                <div id="textContent">
+                  <div id="goodsTitle">
+                    <span>판매상품</span>
+                    <span id="titleContent">망곰이 어린이 내복입니다다</span>
+                  </div>
+                  <div id="seller">
+                    <span>판매자</span><span>망곰이</span>
+                  </div>
+                  <div id="actionPrice">
+                    <span>낙찰 가격</span><span>45,000</span>
+                  </div>
+                  <div id="addr">
+                    <span>거래 장소</span><span>마포구 연남동</span>
                   </div>
                 </div>
+              </div>
+              <div id="imgRight" class="imgButton">
+                <img src="wagle/image/realRight.jpg" alt="">
+              </div>
+            </div>
+            <div id="mobileNotification">
+              <div id="notice1">
+                <img src="wagle/image/light.jpg" alt="">
+                <div>모바일로 '<span>거래 확정하기</span>'가 가능해요!</div>
+              </div>
+              <div id="notice2">
+                제품을 받고 거래 확정하기를 반드시 눌러주세요.
+              </div>
+            </div>
+            <div class="leftbutton" id="actionEnd">
+              <img id="endImg" src="wagle/image/ok.png" alt="" />
+              <div id="endFont">거래 확정하기</div>
+            </div>
+            <div class="leftbutton" id="reportUser">
+              <img id="reportImg" src="wagle/image/Danger Square.png" alt="" />
+              <div id="reportFont">거래 파기 신고하기</div>
+            </div>
+          </div>
+
+
+          <div id="right">
+            <div id="textArea">
+              <div id="placeholders">
+                <span id="place1">거래완료를 위해 쪽지를 주고 받으세요.</span>
+                <span>(거래 장소,시간정하기)</span>
+              </div>
+
+              <div id="chatShowArea">
+                <!-- 상대방 영역 -->
+                <div class="chatop">
+                  <div class="chatNick" id="opNick">
+                    아이디
+                  </div>
+                  <div class="imgAndContent">
+                    <div>
+                      <img class="chatimg" src="wagle/image/image 17.jpg" alt="">
+                    </div>
+
+                    <div class="chatContentWrap">
+                      <div class="chatContent">
+                        dsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsa
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+                <!--         -->
+
+                <!-- 나의 영역 -->
+                <div class="chatme">
+                  <div class="chatNick" id="myNick">
+                    아이디
+                  </div>
+                  <div class="imgAndContent">
+
+                    <div>
+                      <img class="chatimg" src="wagle/image/image 17.jpg" alt="">
+                    </div>
+
+                    <div class="chatContentWrap">
+                      <div class="chatContent">
+                        adssdadsadsadsaddsadsadsadsadsasaddsadsadsadsadsadsadsadsads
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+                <!--         -->
 
               </div>
-              <div id="textContent">
-                <div id="goodsTitle">
-                  <span>판매상품</span>
-                  <span id="titleContent">망곰이 어린이 내복입니다다</span>
-                </div>
-                <div id="seller">
-                  <span>판매자</span><span>망곰이</span>
-                </div>
-                <div id="actionPrice">
-                  <span>낙찰 가격</span><span>45,000</span>
-                </div>
-                <div id="addr">
-                  <span>거래 장소</span><span>마포구 연남동</span>
-                </div>
+
+            </div>
+
+
+            <div id="chatInputArea">
+              <div id="chatinputwrap">
+                <input type="text" id="chatinput">
+                <div id="inputbutton">보내기</div>
               </div>
             </div>
-            <div id="imgRight" class="imgButton">
-              <img src="wagle/image/realRight.jpg" alt="">
-            </div>
+
           </div>
-          <div id="mobileNotification">
-            <div id="notice1">
-              <img src="wagle/image/light.jpg" alt="">
-              <div>모바일로 '<span>거래 확정하기</span>'가 가능해요!</div>
-            </div>
-            <div id="notice2">
-              제품을 받고 거래 확정하기를 반드시 눌러주세요.
-            </div>
-          </div>
-          <div class="leftbutton" id="actionEnd">
-            <img id="endImg" src="wagle/image/ok.png" alt="" />
-            <div id="endFont">거래 확정하기</div>
-          </div>
-          <div class="leftbutton" id="reportUser">
-            <img id="reportImg" src="wagle/image/Danger Square.png" alt="" />
-            <div id="reportFont">거래 파기 신고하기</div>
-          </div>
-        </div>
-        <div id="right">
-          <div id="textArea">
-            <div id="placeholders">
-              <span id="place1">거래완료를 위해 쪽지를 주고 받으세요.</span>
-              <span>(거래 장소,시간정하기)</span>
-            </div>
-            <div id="chatShowArea">
-              <div id="chatWarp">
-                <div class="chatop hide">아이디 : <span>내용</span></div>
-                <div class="chatme hide">아이디 : <span>내용</span></div>
-              </div>
-            </div>
-          </div>
-          <div id="chatInputArea">
-            <div id="chatinputwrap">
-              <input type="text" id="chatinput">
-              <div id="inputbutton">보내기</div>
-            </div>
-          </div>
+
+
         </div>
       </div>
     </div>
   </div>
+
+
+
   <script src="wagle/js/slidChat.js"></script>
   <script src="wagle/js/slide.js"></script>
 
