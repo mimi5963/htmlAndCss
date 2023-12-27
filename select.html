@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+  <title>Document</title>
+
+  <script>
+
+    window.onload = function () {
+      /**/
+
+
+    }
+
+    function getLowerCategories() {
+
+      let ca1 = document.querySelector("#goodsCategory1").value;
+      console.log(ca1);
+
+      var category2 = $("#goodsCategory2");
+
+      // category2의 모든 옵션을 제거
+      category2.empty();
+
+      // category1_value에 따라서 동적으로 옵션 추가
+      switch (ca1) {
+        case "1":
+          category2.append('<option value="">2차 카테고리</option>');
+          category2.append('<option value="2">여성의류</option>');
+          category2.append('<option value="3">남성의류</option>');
+          category2.append('<option value="4">코트</option>');
+          category2.append('<option value="5">어린이</option>');
+          category2.append('<option value="6">신발</option>');
+          category2.append('<option value="7">가방 / 지갑</option>');
+          category2.append('<option value="8">시계</option>');
+          category2.append('<option value="9">주얼리</option>');
+          category2.append('<option value="10">미용</option>');
+          break;
+        case "11":
+          category2.append('<option value="">2차 카테고리</option>');
+          category2.append('<option value="12">노트북</option>');
+          category2.append('<option value="13">데스크탑</option>');
+          category2.append('<option value="14">웨어러블</option>');
+          category2.append('<option value="15">휴대폰</option>');
+          category2.append('<option value="16">태블릿</option>');
+          category2.append('<option value="17">컴퓨터 주변기기</option>');
+          category2.append('<option value="18">카메라</option>');
+          category2.append('<option value="19">콘솔 게임기</option>');
+          break;
+        case "20":
+          category2.append('<option value="">2차 카테고리</option>');
+          category2.append('<option value="21">소모품</option>');
+          category2.append('<option value="22">옷</option>');
+          category2.append('<option value="23">장난감</option>');
+          break;
+        case "24":
+          category2.append('<option value="">2차 카테고리</option>');
+          category2.append('<option value="24" style="display: none;">도서/음악</option>');
+          break;
+        case "25":
+          category2.append('<option value="">2차 카테고리</option>');
+          category2.append('<option value="25" style="display: none;">기타</option>');
+          break;
+        case "26":
+          category2.append('<option value="">2차 카테고리</option>');
+          category2.append('<option value="26" style="display: none;">생활/가전</option>');
+          break;
+        default:
+          category2.append('<option value="">2차 카테고리</option>');
+          break;
+      }
+
+      // category2의 상태(disabled 여부)를 설정
+      if (ca1 === "24" || ca1 === "25" || ca1 === "26") {
+        category2.prop("disabled", true);
+      } else {
+        category2.prop("disabled", false);
+      }
+    }
+
+  </script>
+</head>
+
+<body>
+
+  <select id="goodsCategory1" onchange="getLowerCategories();">
+    <option value="">1차 카테고리</option>
+    <option value="1">패션 / 뷰티</option>
+    <option value="11">전자기기</option>
+    <option value="20">반려동물</option>
+    <option value="26">생활 / 가전</option>
+    <option value="24">도서 / 음악</option>
+    <option value="25">기타</option>
+  </select>
+
+  <select id="goodsCategory2">
+    <option value="">2차 카테고리</option>
+
+</body>
+
+</html>

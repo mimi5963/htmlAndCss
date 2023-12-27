@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      text-decoration: none;
+      list-style: none;
+    }
+
+    #container {
+      width: 100%;
+      min-height: 1280px;
+      border: 1px solid black;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #wrap {
+      width: 90%;
+      height: 1000px;
+      margin: 0 auto;
+      border: 1px solid black;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+
+    }
+
+    /*  왼쪽 영역 시작*/
+    #left {
+      width: 60%;
+      height: 100%;
+      border: 1px solid red;
+    }
+
+    #leftBox {
+      display: flex;
+      flex-direction: column;
+
+    }
+
+    #left>div {
+      border: 1px solid black;
+
+    }
+
+    #storeImgDiv {
+      height: 25%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #storeImg {
+      width: 300px;
+      height: 200px;
+      border: 1px solid black;
+    }
+
+    #storeContent {
+      height: 25%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .storeInfo {
+      width: 100%;
+      height: 16.6%;
+      border: 1px solid black;
+
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+    }
+
+    .label {
+      width: 20%;
+      padding-left: 10px;
+    }
+
+    .Info {
+      width: 65%;
+      text-align: center;
+    }
+
+    #storeFoot {
+      width: 100%;
+      height: 50%;
+      position: relative;
+      overflow: auto;
+    }
+
+    #menuBox {
+      width: 99%;
+      height: 100%;
+      border: 1px solid rebeccapurple;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+
+      position: absolute;
+    }
+
+    .menudiv {
+
+      height: 20%;
+      border: 1px solid black;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .menudiv>div {
+      height: 100%;
+      width: 25%;
+      border: 1px solid black;
+    }
+
+
+    #menuImg {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 20%;
+    }
+
+    #menuImg>img {
+      width: 100px;
+      height: 80px;
+    }
+
+
+    #menuContent {
+      width: 40%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    #menuContent>div {
+      width: 100%;
+      height: 33%;
+      border: 1px solid black;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-evenly;
+    }
+
+    #menuQuen {
+      width: 15%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #plusButton {
+      width: 10%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /*  왼쪽 영역 끝*/
+
+
+    #right {
+      width: 38%;
+      height: 100%;
+      border: 1px solid blue;
+      display: flex;
+      flex-direction: column;
+    }
+
+    #top {
+      width: 100%;
+      height: 70%;
+      border: 1px solid black;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+
+    #top>div {
+      width: 100%;
+      border: 1px solid black;
+      height: 33.3%;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    #top>#label {
+      height: 10%;
+      line-height: 50px;
+    }
+
+    #top>#rightmenus {
+      height: 80%;
+
+    }
+
+    .rightmenu {
+      width: 100%;
+      height: 10%;
+      display: flex;
+      flex-direction: row;
+      border: 1px solid black;
+      padding-left: 10px;
+      padding-right: 10px;
+      font-weight: bold;
+      text-align: center;
+      font-size: 10px;
+      line-height: 50px;
+    }
+
+    .rightmenu>div {
+      width: 33.3%;
+      border: 1px solid black;
+    }
+
+
+    #top>#totalPriceBox {
+      height: 10%;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #bottom {
+      width: 100%;
+      height: 30%;
+      border: 1px solid black;
+
+    }
+
+    #bottom>div {
+      width: 100%;
+      height: 50%;
+      border: 1px solid black;
+    }
+
+    #button1 {
+      width: 90%;
+      height: 100%;
+      border: 1px solid black;
+      display: flex;
+
+      flex-direction: row;
+      justify-content: space-evenly;
+      align-items: center;
+
+    }
+
+    #button1>div {
+      width: 30%;
+      border: 1px solid black;
+      height: 40%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-weight: bold;
+    }
+
+    #deliver {
+      background-color: #21EF42;
+    }
+
+    #pickup {
+      background-color: #EF2121;
+    }
+
+    #pay {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-weight: bold;
+    }
+
+    #payButton {
+      background-color: #21EF42;
+      width: 70%;
+      height: 40%;
+      border: 1px solid black;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="container">
+    <div id="wrap">
+      <div id="left">
+        <div class="leftBox" id="storeImgDiv">
+          <img id="storeImg" src="../wagle/image/mang1.png" alt="">
+        </div>
+        <div class="leftBox" id="storeContent">
+          <div class="storeInfo">
+            <div class="label">가게 이름</div>
+            <div class="Info">채원 나라</div>
+          </div>
+          <div class="storeInfo">
+            <div class="label">가게 번호</div>
+            <div class="Info">010-1234-1234</div>
+          </div>
+          <div class="storeInfo">
+            <div class="label">가게 주소</div>
+            <div class="Info">지구 어딘가</div>
+          </div>
+          <div class="storeInfo">
+            <div class="label">오픈 시간</div>
+            <div class="Info">09:00</div>
+          </div>
+          <div class="storeInfo">
+            <div class="label">마감 시간</div>
+            <div class="Info">22:00</div>
+          </div>
+          <div class="storeInfo">
+            <div class="label">식당 설명</div>
+            <div class="Info">짜증을 내어서 무엇하나 이이~~</div>
+          </div>
+        </div>
+        <div class="leftBox" id="storeFoot">
+          <!--총 메뉴 영역-->
+          <div id="menuBox">
+
+            <!-- 사장님이 메뉴 추가시 동적으로 추가될 메뉴 div-->
+            <div class="menudiv">
+              <div id="menuImg">
+                <img src="../wagle/image/mang2.jpg" alt="">
+              </div>
+              <div id="menuContent">
+                <div id="menuName">
+                  <div>메뉴이름:</div>
+                  <div>개1</div>
+                </div>
+                <div id="menuPrice">
+                  <div>메뉴가격:</div>
+                  <div>4500</div>
+                </div>
+                <div id="menuInfo">
+                  <div>메뉴설명:</div>
+                  <div>제철</div>
+                </div>
+              </div>
+              <div id="menuQuen">
+                <div>수량:</div>
+                <div>1</div>
+              </div>
+              <div id="plusButton">
+                <div> + &nbsp</div>
+                <div> - </div>
+              </div>
+            </div>
+            <!-- 사장님이 메뉴 추가시 동적으로 추가될 메뉴 div-->
+
+            <div class="menudiv">
+              <div id="menuImg">
+                <img src="../wagle/image/279584326603800.jpg" alt="">
+              </div>
+              <div id="menuContent">
+                <div id="menuName">
+                  <div>메뉴이름:</div>
+                  <div>개1</div>
+                </div>
+                <div id="menuPrice">
+                  <div>메뉴가격:</div>
+                  <div>4500</div>
+                </div>
+                <div id="menuInfo">
+                  <div>메뉴설명:</div>
+                  <div>제철</div>
+                </div>
+              </div>
+              <div id="menuQuen">
+                <div>수량:</div>
+                <div>1</div>
+              </div>
+              <div id="plusButton">
+                <div> + &nbsp</div>
+                <div> - </div>
+              </div>
+            </div>
+
+            <div class="menudiv">
+              <div id="menuImg">
+                <img src="../wagle/image/mang4.jpg" alt="">
+              </div>
+              <div id="menuContent">
+                <div id="menuName">
+                  <div>메뉴이름:</div>
+                  <div>개1</div>
+                </div>
+                <div id="menuPrice">
+                  <div>메뉴가격:</div>
+                  <div>4500</div>
+                </div>
+                <div id="menuInfo">
+                  <div>메뉴설명:</div>
+                  <div>제철</div>
+                </div>
+              </div>
+              <div id="menuQuen">
+                <div>수량:</div>
+                <div>1</div>
+              </div>
+              <div id="plusButton">
+                <div> + &nbsp</div>
+                <div> - </div>
+              </div>
+            </div>
+
+            <div class="menudiv">
+              <div id="menuImg">
+                <img src="../wagle/image/mang3.jpg" alt="">
+              </div>
+              <div id="menuContent">
+                <div id="menuName">
+                  <div>메뉴이름:</div>
+                  <div>개1</div>
+                </div>
+                <div id="menuPrice">
+                  <div>메뉴가격:</div>
+                  <div>4500</div>
+                </div>
+                <div id="menuInfo">
+                  <div>메뉴설명:</div>
+                  <div>제철</div>
+                </div>
+              </div>
+              <div id="menuQuen">
+                <div>수량:</div>
+                <div>1</div>
+              </div>
+              <div id="plusButton">
+                <div> + &nbsp</div>
+                <div> - </div>
+              </div>
+            </div>
+
+          </div>
+          <!-- 총메뉴 영역 끝-->
+        </div>
+      </div>
+
+
+      <div id="right">
+
+        <div id="top">
+          <div id="label">장바구니</div>
+          <div id="rightmenus">
+
+            <!-- 사용자가 메뉴 추가시 동적으로 추가될 메뉴 div-->
+            <div class="rightmenu">
+              <div id="rightMenuName">
+                망곰이
+              </div>
+              <div id="rightMenuQuen">
+                수량:1개
+              </div>
+              <div id="rightMenuPrice">
+                가격:5000원
+              </div>
+            </div>
+            <!-- 사용자가 메뉴 추가시 동적으로 추가될 메뉴 div-->
+
+          </div>
+          <div id="totalPriceBox">
+            <div>결제금액:</div>
+            <div>13800</div>
+          </div>
+        </div>
+        <div id="bottom">
+          <div id="button1">
+
+            <div id="deliver">
+              배달
+            </div>
+
+            <div id="pickup">
+              픽업
+            </div>
+
+          </div>
+
+          <div id="pay">
+            <div id="payButton">
+              결제
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+
+    </div>
+  </div>
+
+</body>
+
+</html>

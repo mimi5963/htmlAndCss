@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Sample</title>
+  <link rel="stylesheet" href="wagle/css/common.css">
+  <style>
+    #container {
+      border: 1px solid black;
+    }
+
+    #wrap {
+      width: 90%;
+      height: 100%;
+      height: 1000px;
+      margin: 0 auto;
+      border: 1px solid black;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #inputBoxContainer {
+      width: 100%;
+      height: 90%;
+      border: 1px solid black;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+    }
+
+    .inputBox {
+      border: 1px solid black;
+      width: 80%;
+      height: 12.5%;
+    }
+
+    .inputBox.i1 {
+      height: auto;
+    }
+
+    #fileInputBox {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+    }
+
+    #imageBox {
+      width: 600px;
+      background-color: #EBEBEB;
+      height: 120px;
+      display: flex;
+      flex-direction: row;
+
+      align-items: center;
+    }
+
+    #selectImageBox {
+      width: 90px;
+      height: 90px;
+    }
+
+    #fileLengthText {
+      margin-left: 55px;
+    }
+
+    .pointer {
+      color: #FF0000;
+    }
+
+    .inputlabel {
+      font-size: 15px;
+      font-weight: bold;
+    }
+
+    #imageBoxShow {
+      width: 85%;
+      border: 1px solid black;
+      height: 100%;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <div id="center">
+    <div id="container">
+      <div id="wrap">
+        <div id="inputBoxContainer">
+          <div class="inputBox i1">
+            <div id="fileInputBox">
+              <div class="inputlabel"><span class="pointer">*</span>상품 이미지</div>
+              <div id="inputlable">
+                <span id="fileLengthText">(0/5)</span>
+              </div>
+              <div id="inputFileArea">
+                <input id="inputFile" type="file" multiple accept="image/*" style="display: none;">
+                <input type="hidden" id="goods_th_img" name="goods_th_img" />
+                <div id="imageBox">
+                  <img id="selectImageBox" class="selectedImageBox" src="wagle/image/imagebox.PNG" alt="">
+                  <div id="imageBoxShow">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="inputBox i2"></div>
+          <div class="inputBox i3"></div>
+          <div class="inputBox i4"></div>
+          <div class="inputBox i5"></div>
+          <div class="inputBox i6"></div>
+          <div class="inputBox i7"></div>
+          <div class="inputBox i8"></div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>
